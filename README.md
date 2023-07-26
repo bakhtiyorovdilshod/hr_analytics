@@ -1,1 +1,1 @@
-# fastapi_template
+# FastApi Example Project
