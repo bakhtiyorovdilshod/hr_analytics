@@ -1,0 +1,9 @@
+fastapi==0.100.0
+uvicorn==0.23.1
+pydantic==2.0.3
+SQLAlchemy==2.0.19
+databases==0.7.0
+pydantic-settings==2.0.2
+pandas==2.0.3
+pytest===7.4.0
+alembic==1.11.1
