@@ -1,30 +1,20 @@
-# pull official base image
-FROM python:3.11.2-slim-buster
+# Dockerfile
 
-# set working directory
-RUN mkdir -p /web/
-ENV APP_HOME=/web/lazy_work
-WORKDIR ${APP_HOME}
+# Use the official Python image as a base
+FROM python:3.8-slim
 
-RUN mkdir ${APP_HOME}/staticfiles
-RUN mkdir ${APP_HOME}/media
+# Set the working directory in the container
+WORKDIR /src
 
+# Copy the application code and requirements into the container
+COPY ./src /src
+COPY ./requirements.txt /src
 
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# install system dependencies
-RUN apt-get update \
-  && apt-get -y install netcat gcc \
-  && apt-get clean \
-
-
-# install python dependencies
-RUN pip install --upgrade pip
-COPY ./requirements.txt ${APP_HOME}/requirements.txt
+# Install the required dependencies
 RUN pip install -r requirements.txt
 
+# Expose the FastAPI port
+EXPOSE 8000
 
-# add app
-COPY . ${APP_HOME}
+# Command to run the application
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
