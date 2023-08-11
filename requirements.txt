@@ -7,3 +7,6 @@ pytest===7.4.0
 alembic==1.11.1
 motor==3.2.0
 pydantic[email]
+kafka-python==2.0.2
+confluent-kafka==2.2.0
+python-dotenv==1.0.0
