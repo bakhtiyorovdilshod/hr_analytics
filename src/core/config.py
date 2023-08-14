@@ -34,12 +34,12 @@ class Settings(BaseSettings):
     MONGODB_MIN_CONNECTIONS_COUNT: int = 10
     MONGODB_HOST: str = os.environ.get('MONGODB_HOST')
     MONGODB_PORT: int = os.environ.get('MONGODB_PORT')
-    MONGODB_USER: str = os.environ.get('MONGODB_USER')
-    MONGODB_PASSWORD: str = os.environ.get('MONGODB_PASSWORD')
-    MONGODB_DB: str = os.environ.get('MONGODB_DB')
-    MONGODB_CONN_STRING: Union[str, "DatabaseURL"] = DatabaseURL(
-        f"mongodb://{MONGODB_USER}:{MONGODB_PASSWORD}@{MONGODB_HOST}:{MONGODB_PORT}"
-    )
+    MONGODB_USER: str = os.environ.get('MONGO_INITDB_ROOT_USERNAME')
+    MONGODB_PASSWORD: str = os.environ.get('MONGO_INITDB_ROOT_PASSWORD')
+    MONGODB_DB: str = os.environ.get('MONGO_INITDB_DATABASE')
+    MONGODB_CONN_STRING: str = os.environ.get('DATABASE_URL')
+
+    EVENT_COLLECTIONS: str = 'events'
 
     class Config:
         case_sensitive = True

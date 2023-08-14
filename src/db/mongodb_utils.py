@@ -19,3 +19,23 @@ def close_mongo_connection(app: FastAPI):
     print('closing database connection')
     db.client.close()
     print('closed')
+
+
+async def init_mongo(db_name: str, db_url: str, collection: str):
+    """
+
+    Args:
+        db_name:
+        db_url:
+        collection:
+
+    Returns:
+
+    """
+    mongo_client = AsyncIOMotorClient(db_url)
+    mongo_database = mongo_client[db_name]
+    mongo_collections = {
+        collection: mongo_database.get_collection(collection),
+    }
+    # return {0: mongo_client, 1: mongo_database, 2: mongo_collections}
+    return mongo_client, mongo_database, mongo_collections

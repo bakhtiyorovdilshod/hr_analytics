@@ -10,3 +10,4 @@ pydantic[email]
 kafka-python==2.0.2
 confluent-kafka==2.2.0
 python-dotenv==1.0.0
+pymongo==4.4.1
